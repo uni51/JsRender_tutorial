@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{if}}}タグで、テンプレートを分岐する例</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"  type="text/javascript"></script>
+<script src="./jsrender.js" type="text/javascript"></script>
+
+<script id="theTmpl" type="text/x-jsrender">
+  {{if displayType == 0}}
+    <p>Name: {{:name}} </p>
+  {{else displayType == 1}}
+    <p>Name: {{:azana}} </p>
+  {{else}}
+    <p>Name: {{:nickName}} </p>
+  {{/if}}
+</script>
+
+<script type="text/javascript">
+$(function () {
+  var data = [
+    {
+      "name": "Kannu",
+      "azana": "Unchou",
+      "nickName": "Hige",
+      "displayType": 0
+    },{
+      "name": "Chouhi",
+      "azana": "Ekitoku",
+      "nickName": "Haruhi",
+      "displayType": 1
+    },
+    {
+      "name": "Ryubiu",
+      "azana": "Gentoku",
+      "nickName": "Kotei",
+      "displayType": 2
+    },
+    {
+      "name": "ShokatuRyou",
+      "azana": "Koumei",
+      "nickName": "awawa",
+      "displayType": 3
+    }
+  ];
+  var html = $('#theTmpl').render(data);
+  console.log(html);
+  $('#result').append(html);
+}); 
+</script>
+</head>
+<body>
+  <div id="result"></div>
+</body>
+</html>
